@@ -6,7 +6,9 @@ public class blink : MonoBehaviour {
 
     public Arduino arduino;
 
-    public int blink_pin = 13;
+    public int current_pin = 5;
+
+
     // Use this for initialization
     void Start()
     {
@@ -17,43 +19,53 @@ public class blink : MonoBehaviour {
         arduino.Setup(ConfigurePins);
 
         ConfigurePins();
-        //StartCoroutine(BlinkLoop());
     }
 
     void ConfigurePins()
     {
         Debug.Log("set pin mode");
-        arduino.pinMode(blink_pin, PinMode.OUTPUT);
+        arduino.pinMode(current_pin, PinMode.OUTPUT);
     }
 
-    public void change_LED(bool blink_led)
+    public void change_effect(bool effect, int num_falses)
     {
         //if the LED should blink repeatedly, startcoroutine BlinkLoop(bool = true)
         //otherwise stop coroutine BlinkLoop
-        if (blink_led)
+        if (effect)
         {
-            StartCoroutine("BlinkConstant");
+            StartCoroutine("EffectConstant");
         }
         else
         {
-            StopCoroutine("BlinkConstant");
+            if (num_falses == 0)
+            {
+                if (current_pin == 3)
+                {
+                    switch_pin(5);
+                }
+                else
+                {
+                    switch_pin(3);
+                }
+            }
+            //StopCoroutine("EffectConstant");
             //turns off LED if caught in on position
-            arduino.digitalWrite(blink_pin, Arduino.LOW);
+            //arduino.digitalWrite(current_pin, Arduino.LOW);
         }
-        
+
     }
 
     //blinks LED light once
     IEnumerator BlinkButtonDelay()
     {
-        arduino.digitalWrite(blink_pin, Arduino.HIGH);
+        arduino.digitalWrite(current_pin, Arduino.HIGH);
         yield return new WaitForSeconds(1);
-        arduino.digitalWrite(blink_pin, Arduino.LOW);
+        arduino.digitalWrite(current_pin, Arduino.LOW);
     }
 
-    IEnumerator BlinkConstant()
+    IEnumerator EffectConstant()
     {
-        arduino.digitalWrite(blink_pin, Arduino.HIGH);
+        arduino.digitalWrite(current_pin, Arduino.HIGH);
         yield return new WaitForSeconds(0);
     }
 
@@ -62,11 +74,21 @@ public class blink : MonoBehaviour {
     {
         while (go)
         {  
-            arduino.digitalWrite(blink_pin, Arduino.HIGH); // led ON			
+            arduino.digitalWrite(current_pin, Arduino.HIGH); // led ON			
             yield return new WaitForSeconds(1);
-            arduino.digitalWrite(blink_pin, Arduino.LOW); // led OFF
+            arduino.digitalWrite(current_pin, Arduino.LOW); // led OFF
             yield return new WaitForSeconds(1);
         }
+    }
+
+
+    //Switches current Arduino pin used so that the
+    //vest effect will change. 
+    void switch_pin(int pin) {
+        StopCoroutine("EffectConstant");
+        arduino.digitalWrite(current_pin, Arduino.LOW);
+        current_pin = pin;
+        ConfigurePins();
     }
 }
 

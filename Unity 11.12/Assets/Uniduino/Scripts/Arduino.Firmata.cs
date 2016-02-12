@@ -60,6 +60,7 @@ namespace Uniduino
 		public Action<string> Log = (s) => {};          // redirect logging output
 						
 		public static int LOW              = 0;
+        //public static int MEDIUM = 0.5;
         public static int HIGH             = 1;
 		
 		private const int BATCH_PROCESS_BYTES_LIMIT = 64; // process no more than this many bytes per individual processInput call
