@@ -70,7 +70,7 @@ What do you mean, it's complicated? Where is your father right now?;He's around,
 What was the reason behind the divorce?;My mother was always putting her work before her family;My mother suspected my father was having an affair;My mother had fallen in love with someone else;true;true;true;73;70;71
 Did you know he was having an affair?;Yes, but he told me to keep it a secret; ;Not at the time. But she later hired a private investigator to confirmed it;false;true;true;72;70;73
 Your mother was having an affair?;Yes, but it didn't matter because she had caught my father cheating first; ;No, she was always loyal to my father;true;true;false;73;71;73
-Did your mother eventually find out?;No, she never found out. As far as I know, my father was completely loyal to her; ;Yes, she sent out a private investigator out to follow him and confirmed it;false;true;true;74;72;73
+Did your mother eventually find out?;No, she never found out. As far as she knew, my father was completely loyal to her; ;Yes, she sent out a private investigator out to follow him and confirmed it;false;true;true;74;72;73
 And where is your father now?;He's in a mental facility in Virginia for trying to kill himself;No clue. He moved away and I haven't heard from him since;He's around, he hasn't done much since his campaign for senate;true;false;false;78;75;74
 When was the last time you saw him?;I went to go visit him;After he tried to kill himself;I went to get coffee with him;true;true;false;76;78;79
 Where did he move to? We need know in case we have to bring him in for questioning too.;He moved into a small apartment;He moved to the West coast;He moved to a mental facility;false;false;true;81;77;81
