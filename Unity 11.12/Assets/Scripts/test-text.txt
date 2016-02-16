@@ -1,11 +1,11 @@
-So let's start from the beginning...  How do you feel about your mother?;I didn't feel anything;I was disappointed with her;I had a difficult relationship with her;false;false;true;2;3;1
+So let's start from the beginning...  How did you feel about your mother?;I didn't feel anything;I was disappointed with her;I had a difficult relationship with her;false;false;true;2;3;1
 Oh? What do you mean by difficult?;It was just very difficult to love her;I never really saw her growing up, so we didn't have much of a relationship;She often put her work before her family;true;false;true;4;5;6
-Why don't you feel anything anything about her?;Because I had a hard time being in the same room as her;I never really saw her growing up;I just found it hard to love her;true;false;true;1;5;4
+Why didn't you feel anything anything about her?;It was hard being in the same room with her;I never really saw her growing up;I just found it hard to love her;true;true;true;4;5;4
 A son who's disappointed in their mother, huh... What did she do?;She was just never around;Nothing, she's just a very difficult person to be around;She had a serious drinking problem;false;true;false;5;1;13
-I can't suspect it to be that difficult to love one's own mother... can you please elaborate?;We argued a lot;She was absent for the majority of my life;She beat me;true;false;false;7;5;9
+Can you please elaborate?;We argued a lot;She was absent for the majority of my life;She beat me;true;false;false;7;5;9
 Where was she instead?;She was always at work;Wherever I wasn't because we always fought when we were together;She simply avoided me because she was disappointed in me;false;true;false;6;7;10
 I understand your mother is the CEO of a major company. What does your mother think of you?;She had a hard time accepting me. So we argued a lot;She always complained about me;She's disappointed in me;true;false;false;11;8;10
-That's not enough for me. I mean what human being hasn't fought with their parent? Can you please elaborate?;She had a hard time accepting me;She always complained about me;She was not happy with my career choices;true;false;true;11;8;17
+What human being hasn't fought with their parent? Can you please elaborate?;She had a hard time accepting me;She always complained about me;She was not happy with my career choices;true;false;true;11;8;17
 What did she normally complain about?;She complained I never check in with her when I was in school;She had high expectations in me, so we often disagreed with each other;She complained about my career choices;false;true;true;16;11;17
 Why did she beat you?;She just beat me for no reason;We often disagreed with each other so that was usually the end result;She's an alcoholic and whenever she drank she would get violent;false;true;false;12;7;13
 What's there to be disappointed about?;Because I was secretly working instead of finishing college;Because she found drugs in my room;Because I had a gambling problem;true;false;false;15;21;14
