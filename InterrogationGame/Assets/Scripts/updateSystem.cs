@@ -159,7 +159,6 @@ public class updateSystem : MonoBehaviour
     // Changes button color to red if player answers incorrectly
     void redButton(GameObject button)
     {
-        //button.GetComponent<Image>().color = Color.red;
         button.GetComponent<Image>().CrossFadeColor(Color.red, 1.0f, false, true);
     }
 
