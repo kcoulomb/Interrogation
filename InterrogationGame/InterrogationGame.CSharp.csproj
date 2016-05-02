@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\blink.cs" />
     <Compile Include="Assets\Scripts\changeScene.cs" />
     <Compile Include="Assets\Scripts\cigSmokeGif.cs" />
+    <Compile Include="Assets\Scripts\cutScenePlayer.cs" />
     <Compile Include="Assets\Scripts\dialoguetree.cs" />
     <Compile Include="Assets\Scripts\dustParticles.cs" />
     <Compile Include="Assets\Scripts\interrogator.cs" />

@@ -21,7 +21,6 @@ public class menuSmoke : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log (i);
 
         // Animation changes every 5 frames
         if(Time.frameCount % 5 != 0)

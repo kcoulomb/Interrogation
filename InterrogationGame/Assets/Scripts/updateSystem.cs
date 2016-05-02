@@ -16,11 +16,12 @@ public class updateSystem : MonoBehaviour
 
     public UIManager checkIfPaused;
 
+    public cutScenePlayer cutsceneHandler;
+
     public float wait_cer = 0;
     public float wait_int = 0;
 
     int prevConsecFalse = 0;
-
 
     // ------ update ------
     // 1. determines if buttons can be clicked/which button was clicked
@@ -39,8 +40,8 @@ public class updateSystem : MonoBehaviour
             get_dialogue.change_can_click();
 
             //question_text.GetComponent<Text>().text = "";
-            fadeOutIntPic(question_text);
-            fadeOutIntPic(question_box);
+            fadeOutPic(question_text);
+            fadeOutPic(question_box);
         }        
 
         int selected_button_num = 0;
@@ -86,13 +87,12 @@ public class updateSystem : MonoBehaviour
     IEnumerator changeText(int selected_button_num, GameObject[] buttons, GameObject question_text, GameObject question_box, float wait_cer)
     {
         yield return new WaitForSeconds(wait_cer);
-        
-        if (get_dialogue.current_system.children[selected_button_num] == 100) {
-            scene.moveScene("credit");
-        }
+
+        yield return new WaitForSeconds(sceneHandler(selected_button_num));
+
+        cutsceneHandler.returnCutsceneTexture();
 
         get_dialogue.updateHeatmap(get_dialogue.current_system.children[selected_button_num]);
-
 
         get_dialogue.addNode(get_dialogue.getConnection(selected_button_num));
 
@@ -104,7 +104,7 @@ public class updateSystem : MonoBehaviour
 
         interrogatorPictures.GetComponent<Image>().sprite = get_dialogue.getCurrentImage();
 
-        fadeInIntPic(interrogatorPictures);
+        fadeInPic(interrogatorPictures);
 
         yield return new WaitForSeconds(1f);
 
@@ -114,8 +114,8 @@ public class updateSystem : MonoBehaviour
 
         question_text.GetComponent<Text>().text = get_dialogue.getQuestion();
 
-        fadeInIntPic(question_box);
-        fadeInIntPic(question_text);
+        fadeInPic(question_box);
+        fadeInPic(question_text);
 
         for (int i = 0; i < buttons.Length; i++)
         {
@@ -133,15 +133,15 @@ public class updateSystem : MonoBehaviour
         
     }
 
-    void fadeOutIntPic(GameObject intPic)
+    void fadeOutPic(GameObject pic)
     {
-        intPic.GetComponent<Graphic>().CrossFadeAlpha(0, 1f, false);
+        pic.GetComponent<Graphic>().CrossFadeAlpha(0, 1f, false);
     }
 
-    void fadeInIntPic(GameObject intPic)
+    void fadeInPic(GameObject pic)
     {
-        intPic.GetComponent<Graphic>().CrossFadeAlpha(0f, 0f, false);
-        intPic.GetComponent<Graphic>().CrossFadeAlpha(1f, 1f, false);
+        pic.GetComponent<Graphic>().CrossFadeAlpha(0f, 0f, false);
+        pic.GetComponent<Graphic>().CrossFadeAlpha(1f, 1f, false);
     }
     
     void fadeOutAnswerText(GameObject button)
@@ -162,4 +162,25 @@ public class updateSystem : MonoBehaviour
         button.GetComponent<Image>().CrossFadeColor(Color.red, 1.0f, false, true);
     }
 
+    // Triggers cutscenes or moves to credits
+    private float sceneHandler(int selected_button_num)
+    {
+        int destination_node = get_dialogue.current_system.children[selected_button_num];
+        float cutsceneWait = 0;
+
+        Debug.Log(destination_node);
+
+        if (destination_node == 100)
+        {
+            //end of game, go to credits
+            scene.moveScene("credit");
+        } else if (destination_node == 24 || destination_node == 27 || destination_node == 28 || destination_node == 31) {
+            //second cutscene
+            cutsceneWait = cutsceneHandler.playCutscene("cutscene2");          
+        } else if (destination_node == 68 || destination_node == 73 || destination_node == 74 || destination_node == 75 || destination_node == 76) {
+            //third cutscene
+            cutsceneWait = cutsceneHandler.playCutscene("cutscene3");
+        }
+        return cutsceneWait;
+    }
 }

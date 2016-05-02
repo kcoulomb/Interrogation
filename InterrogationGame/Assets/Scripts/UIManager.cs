@@ -6,6 +6,7 @@ public class UIManager : MonoBehaviour
 {
     GameObject[] pauseObjects;
     GameObject[] returnToMain;
+    GameObject[] cutsceneObjects;
     public bool isPaused = false;
     public bool quit = false;
     public bool mainMenu = false;
@@ -44,8 +45,7 @@ public class UIManager : MonoBehaviour
             }
         }
     }
-
-
+    
     //MENU BUTTONS----------------------------------
     public void Resume()
     {
@@ -58,8 +58,6 @@ public class UIManager : MonoBehaviour
 
     public void Menu()
     {
-        //Application.LoadLevel("menu");
-        //AudioListener.pause = false;
         mainMenu = true;
         showAreYouSure();
     }
@@ -90,8 +88,6 @@ public class UIManager : MonoBehaviour
     }
 
     //----------------------------------------------
-
-
 
     //shows objects with ShowOnPause tag
     public void showPaused()

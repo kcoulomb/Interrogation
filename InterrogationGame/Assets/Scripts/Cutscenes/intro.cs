@@ -8,10 +8,10 @@ public class intro : MonoBehaviour {
     private AudioSource sound_effects;
     public blink vest_tutorial;
     public changeScene move_to;
+    public cutScenePlayer cutsceneHandler;
 
     // Use this for initialization
     IEnumerator Start () {
-
         //make button disappear/inactive
         GameObject button = GameObject.FindGameObjectWithTag("Button");
         button.SetActive(false);
@@ -88,8 +88,7 @@ public class intro : MonoBehaviour {
         background = Resources.Load<Sprite>("Other/mug_shot");
         background_image.GetComponent<Image>().sprite = background;
         
-        button.SetActive(true);
-        
+        button.SetActive(true);        
     }
 
     public void answer_false(){
@@ -101,22 +100,27 @@ public class intro : MonoBehaviour {
     IEnumerator after_false()
     {
         //turns on vest
-        vest_tutorial.change_effect(true);
+        //vest_tutorial.change_effect(true);
 
         //needs to change to correct sound effect
         //interrogator explains the vest's reacting
         //replace with interrogator's opening statement pt.1
-        sound_effects.clip = Resources.Load("Voices/Cutscenes/vestintro") as AudioClip;
+        sound_effects = gameObject.AddComponent<AudioSource>();
+        sound_effects.clip = Resources.Load("Voices/Cutscenes/introvest") as AudioClip;
 
         sound_effects.Play();
 
         yield return new WaitForSeconds(sound_effects.clip.length);
 
         //turns off vest
-        vest_tutorial.change_effect(false);
+        //vest_tutorial.change_effect(false);
 
         //interrogator begins game
         yield return new WaitForSeconds(2);
+
+        float cutsceneWait = cutsceneHandler.playCutscene("cutscene1");
+
+        yield return new WaitForSeconds(cutsceneWait);
 
         //move to game
         move_to.moveScene("test");

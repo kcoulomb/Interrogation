@@ -20,7 +20,7 @@ public class PlayVideo : MonoBehaviour
     void Awake()
     {
         //get the attached GUITexture  
-        videoGUItex = this.GetComponent<GUITexture>();
+        videoGUItex = this.GetComponent<GUITexture>();        
         //get the attached AudioSource  
         movieAS = this.GetComponent<AudioSource>();
         //load the movie texture from the resources folder  

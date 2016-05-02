@@ -9,9 +9,7 @@ public class system : MonoBehaviour {
     public node current_system = null;
     public blink effects;
     string[] textFile = null;
-    private bool can_click = true;
-
-    
+    private bool can_click = true;    
 
     //variables for heat map
     public string[] heatmap = null;
@@ -25,6 +23,7 @@ public class system : MonoBehaviour {
     // 4. Creates the initial node and sets the most recent node to the first node
     void Start()
     {
+
         dialogue_tree = new dialoguetree();
 
         textFile = System.IO.File.ReadAllLines(@"Assets\Scripts\test-text.txt");
@@ -32,8 +31,6 @@ public class system : MonoBehaviour {
 
         addNode(0);
         dialogue_tree.last_node = dialogue_tree.nodes[0];
-
-
     }
 
     // ------ Add Node ------
@@ -131,13 +128,13 @@ public class system : MonoBehaviour {
         {
             dialogue_tree.consecutive_false++;
           
-            effects.change_effect(true, dialogue_tree.consecutive_false);
+            //effects.change_effect(true, dialogue_tree.consecutive_false);
         }
         else
         {
             dialogue_tree.consecutive_false = 0;
 
-            effects.change_effect(false, dialogue_tree.consecutive_false);
+            //effects.change_effect(false, dialogue_tree.consecutive_false);
         }
         
     }
