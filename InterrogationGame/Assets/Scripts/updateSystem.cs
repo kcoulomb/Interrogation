@@ -86,7 +86,7 @@ public class updateSystem : MonoBehaviour
     // 4. changes the button and question text
     IEnumerator changeText(int selected_button_num, GameObject[] buttons, GameObject question_text, GameObject question_box, float wait_cer)
     {
-        yield return new WaitForSeconds(wait_cer);
+        //yield return new WaitForSeconds(wait_cer);
 
         yield return new WaitForSeconds(sceneHandler(selected_button_num));
 
@@ -127,7 +127,7 @@ public class updateSystem : MonoBehaviour
             buttons[i].GetComponentInChildren<Text>().text = new_text[i];
         }
 
-        yield return new WaitForSeconds(wait_int);
+        //yield return new WaitForSeconds(wait_int);
 
         get_dialogue.change_can_click();
         

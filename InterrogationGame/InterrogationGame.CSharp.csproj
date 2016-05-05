@@ -65,18 +65,15 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Cutscenes\intro.cs" />
     <Compile Include="Assets\Scripts\Cutscenes\outro.cs" />
-    <Compile Include="Assets\Scripts\PlayVideo.cs" />
     <Compile Include="Assets\Scripts\UIManager.cs" />
     <Compile Include="Assets\Scripts\audio.cs" />
     <Compile Include="Assets\Scripts\blink.cs" />
     <Compile Include="Assets\Scripts\changeScene.cs" />
-    <Compile Include="Assets\Scripts\cigSmokeGif.cs" />
     <Compile Include="Assets\Scripts\cutScenePlayer.cs" />
     <Compile Include="Assets\Scripts\dialoguetree.cs" />
-    <Compile Include="Assets\Scripts\dustParticles.cs" />
+    <Compile Include="Assets\Scripts\gifs.cs" />
     <Compile Include="Assets\Scripts\interrogator.cs" />
     <Compile Include="Assets\Scripts\menuMusic.cs" />
-    <Compile Include="Assets\Scripts\menuSmoke.cs" />
     <Compile Include="Assets\Scripts\node.cs" />
     <Compile Include="Assets\Scripts\system.cs" />
     <Compile Include="Assets\Scripts\updateSystem.cs" />

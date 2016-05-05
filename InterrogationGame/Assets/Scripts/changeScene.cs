@@ -14,7 +14,6 @@ public class changeScene : MonoBehaviour {
     public void setPrevScene(string previous_scene)
     {
         prev_scene = previous_scene;
-        Debug.Log(prev_scene);
     }
 
     public string getPrevScene()

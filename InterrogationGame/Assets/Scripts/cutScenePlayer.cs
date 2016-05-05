@@ -22,6 +22,11 @@ public class cutScenePlayer : MonoBehaviour
     void Start()
     {
         cutsceneHandler = GameObject.FindGameObjectWithTag("CutSceneHandler");
+
+        if(Application.loadedLevelName == "credit")
+        {
+            StartCoroutine(playCredits());
+        }
     }
 
     public bool cutscenePlayed(string cutscene)
@@ -44,6 +49,28 @@ public class cutScenePlayer : MonoBehaviour
     {
         if (cutscenePlayed(cutscene)) { return 0; }
 
+        setVideoInfo(cutscene);
+
+        movieAS.clip = mTex.audioClip;
+
+        playVideo();
+
+        return movieAS.clip.length;
+    }
+
+    IEnumerator playCredits()
+    {
+        setVideoInfo("credits");
+
+        playVideo();
+
+        yield return new WaitForSeconds(mTex.duration);
+
+        Application.LoadLevel("menu");
+    }
+
+    private void setVideoInfo(string cutscene)
+    {
         //get the attached GUITexture  
         videoGUItex = cutsceneHandler.GetComponent<GUITexture>();
 
@@ -53,21 +80,19 @@ public class cutScenePlayer : MonoBehaviour
         //load the movie texture from the resources folder  
         mTex = (MovieTexture)Resources.Load("Other/" + cutscene);
 
-        movieAS.clip = mTex.audioClip;
         //anamorphic fullscreen  
         videoGUItex.pixelInset = new Rect(Screen.width / 2, Screen.height / 2, 0, 0);
 
         //set the videoGUItex.texture to be the same as mTex  
         videoGUItex.texture = mTex;
+    }
 
+    private void playVideo()
+    {
         //Plays the movie  
         mTex.Play();
         //plays the audio from the movie  
         movieAS.Play();
-
-        Debug.Log(movieAS.clip.length);
-
-        return movieAS.clip.length;
     }
 
     public void returnCutsceneTexture()
