@@ -95,7 +95,8 @@ public class audio : MonoBehaviour
     {
        cer_voice.clip = Resources.Load("Voices/Cervantes/node" + file_index + "-" + button_index + "neutral") as AudioClip;
        cer_voice.Play();
-        return cer_voice.clip.length;
+       Debug.Log("made it");
+       return cer_voice.clip.length;
 
     }
     

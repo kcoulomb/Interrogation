@@ -16,7 +16,7 @@ public class node
 
     public List<int> children;
 
-    public int file_index;
+    public int file_index = 0;
 
     public node()
     {
@@ -36,6 +36,7 @@ public class node
         responses = new List<string>();
         truths = new List<bool>();
         subtitles = new List<string>();
+        file_index = 0;
 
         question = ques;
         responses.Add(ans1);

@@ -21,7 +21,6 @@ public class updateSystem : MonoBehaviour
 
     int prevConsecFalse = 0;
 
-
     // ------ update ------
     // 1. determines if buttons can be clicked/which button was clicked
     // 2. plays Cervantes' dialogue w/ subtitles
@@ -41,13 +40,15 @@ public class updateSystem : MonoBehaviour
             //question_text.GetComponent<Text>().text = "";
             fadeOutIntPic(question_text);
             fadeOutIntPic(question_box);
-        }        
+        }
 
         int selected_button_num = 0;
         while (buttons[selected_button_num] != button){
             selected_button_num++;
         }
-        
+
+        Debug.Log(get_dialogue.getConnection(selected_button_num));
+
         if (get_dialogue.getCurrentIndex() == get_dialogue.getConnection(selected_button_num)) { get_dialogue.change_can_click(); return; }      
         
         wait_cer = audioTracks.play_cer_voice(get_dialogue.getCurrentIndex(), selected_button_num + 1);
@@ -107,6 +108,37 @@ public class updateSystem : MonoBehaviour
         fadeInIntPic(interrogatorPictures);
 
         yield return new WaitForSeconds(1f);
+
+		if (get_dialogue.transition) {
+		
+			if (get_dialogue.dialogue_tree.consecutive_false == 0) {
+
+				get_dialogue.dialogue_tree.interrogator.current_image = UnityEngine.Random.Range (0, 2);
+			
+			} else if (get_dialogue.dialogue_tree.consecutive_false == 2) {
+			
+				get_dialogue.dialogue_tree.interrogator.current_image = UnityEngine.Random.Range(5, 8);
+
+			} else if (get_dialogue.dialogue_tree.consecutive_false == 3) {
+
+				get_dialogue.dialogue_tree.interrogator.current_image = 9;
+
+			} else if (get_dialogue.dialogue_tree.consecutive_false > 3) {
+
+				get_dialogue.dialogue_tree.interrogator.current_image = UnityEngine.Random.Range(10, 11);
+
+			}
+
+				
+			interrogatorPictures.GetComponent<Image>().sprite = get_dialogue.getCurrentImage();
+
+			fadeInIntPic (interrogatorPictures);
+
+			yield return new WaitForSeconds (1f);
+
+			//get_dialogue.transition = false;
+
+		}
 
         wait_int = audioTracks.play_int_voice(get_dialogue.current_system.file_index);
 

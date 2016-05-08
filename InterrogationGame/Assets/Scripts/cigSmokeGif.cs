@@ -21,7 +21,7 @@ public class cigSmokeGif : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		Debug.Log ("udpate smoke");
+		//Debug.Log ("udpate smoke");
 		// Animation changes every 5 frames
 		if(Time.frameCount % 5 != 0)
 		{

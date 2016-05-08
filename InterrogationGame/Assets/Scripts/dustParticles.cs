@@ -27,7 +27,7 @@ public class dustParticles : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		Debug.Log ("udpate dust");
+		//Debug.Log ("udpate dust");
 		// Animation changes every 5 frames
 		if(Time.frameCount % 5 != 0)
 		{

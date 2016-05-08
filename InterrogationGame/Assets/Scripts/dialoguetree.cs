@@ -19,10 +19,10 @@ public class dialoguetree
         nodes = new List<node>();
         last_node = null;
 
-        consecutive_false = 0;
-
         interrogator = new interrogator();
+
         interrogator.pictures = Resources.LoadAll<Sprite>("Interrogator");
+
         consecutive_false = 0;
 
     }
