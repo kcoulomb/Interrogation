@@ -86,7 +86,7 @@ public class updateSystem : MonoBehaviour
     // 4. changes the button and question text
     IEnumerator changeText(int selected_button_num, GameObject[] buttons, GameObject question_text, GameObject question_box, float wait_cer)
     {
-        //yield return new WaitForSeconds(wait_cer);
+        yield return new WaitForSeconds(wait_cer);
 
         yield return new WaitForSeconds(sceneHandler(selected_button_num));
 
@@ -108,6 +108,42 @@ public class updateSystem : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
+        if (get_dialogue.transition)
+        {
+
+            if (get_dialogue.dialogue_tree.consecutive_false == 0)
+            {
+
+                get_dialogue.dialogue_tree.interrogator.current_image = UnityEngine.Random.Range(0, 2);
+
+            }
+            else if (get_dialogue.dialogue_tree.consecutive_false == 2)
+            {
+
+                get_dialogue.dialogue_tree.interrogator.current_image = UnityEngine.Random.Range(5, 8);
+
+            }
+            else if (get_dialogue.dialogue_tree.consecutive_false == 3)
+            {
+
+                get_dialogue.dialogue_tree.interrogator.current_image = 9;
+
+            }
+            else if (get_dialogue.dialogue_tree.consecutive_false > 3)
+            {
+
+                get_dialogue.dialogue_tree.interrogator.current_image = UnityEngine.Random.Range(10, 11);
+
+            }
+
+            interrogatorPictures.GetComponent<Image>().sprite = get_dialogue.getCurrentImage();
+
+            fadeInPic(interrogatorPictures);
+
+            yield return new WaitForSeconds(1f);
+
+        }
+
         wait_int = audioTracks.play_int_voice(get_dialogue.current_system.file_index);
 
         List<string> new_text = get_dialogue.getDialogueSystem();
@@ -127,7 +163,7 @@ public class updateSystem : MonoBehaviour
             buttons[i].GetComponentInChildren<Text>().text = new_text[i];
         }
 
-        //yield return new WaitForSeconds(wait_int);
+        yield return new WaitForSeconds(wait_int);
 
         get_dialogue.change_can_click();
         
@@ -135,13 +171,13 @@ public class updateSystem : MonoBehaviour
 
     void fadeOutPic(GameObject pic)
     {
-        pic.GetComponent<Graphic>().CrossFadeAlpha(0, 1f, false);
+        pic.GetComponent<Graphic>().CrossFadeAlpha(0, 0.5f, false);
     }
 
     void fadeInPic(GameObject pic)
     {
         pic.GetComponent<Graphic>().CrossFadeAlpha(0f, 0f, false);
-        pic.GetComponent<Graphic>().CrossFadeAlpha(1f, 1f, false);
+        pic.GetComponent<Graphic>().CrossFadeAlpha(1f, 0.5f, false);
     }
     
     void fadeOutAnswerText(GameObject button)

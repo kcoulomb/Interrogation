@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Audio;
+using System;
 
 public class system : MonoBehaviour {
 
@@ -15,6 +16,8 @@ public class system : MonoBehaviour {
     public string[] heatmap = null;
     public string playthroughPath = null;
     public int fuck = 103;
+    public Boolean transition = false;
+    public int previousFalseValue = 0;
 
     // ------ Start ------
     // 1. Creates the dialogue tree to hold all of the nodes
@@ -158,22 +161,43 @@ public class system : MonoBehaviour {
     // 2. plays sound effects attached to image
     public void change_interrogator_image()
     {
+        transition = false;
         int current_img = dialogue_tree.interrogator.current_image;
-        if (dialogue_tree.consecutive_false == 0) {
-            dialogue_tree.interrogator.current_image = Random.Range(0, 2);
-        } else if (dialogue_tree.consecutive_false == 1) {
-            dialogue_tree.interrogator.current_image = Random.Range(3, 5);
-        } else if (dialogue_tree.consecutive_false == 2) {
-            dialogue_tree.interrogator.current_image = Random.Range(5, 7);
-        } else if (dialogue_tree.consecutive_false > 2) {
-            dialogue_tree.interrogator.current_image = 8;
-
-            if (dialogue_tree.consecutive_false == 3 && dialogue_tree.interrogator.current_image != current_img) {
-                AudioSource tableSlam;
-                tableSlam = gameObject.AddComponent<AudioSource>();
-                tableSlam.clip = Resources.Load("SoundEffects/table") as AudioClip;
-                tableSlam.Play();
+        Debug.Log("before: " + current_img);
+        if (dialogue_tree.consecutive_false == 0)
+        {
+            if (previousFalseValue == 2 || previousFalseValue > 3)
+            {
+                dialogue_tree.interrogator.current_image = 13;
+                transition = true;
             }
+            else
+            {
+                dialogue_tree.interrogator.current_image = UnityEngine.Random.Range(0, 2);
+            }
+        }
+        else if (dialogue_tree.consecutive_false == 1)
+        {
+            dialogue_tree.interrogator.current_image = UnityEngine.Random.Range(3, 4);
+        }
+        else if (dialogue_tree.consecutive_false == 2)
+        {
+            dialogue_tree.interrogator.current_image = 12;
+            transition = true;
+        }
+        else if (dialogue_tree.consecutive_false == 3)
+        {
+            dialogue_tree.interrogator.current_image = 13;
+            transition = true;
+        }
+        else if (dialogue_tree.consecutive_false > 3 && previousFalseValue == 3)
+        {
+            dialogue_tree.interrogator.current_image = 12;
+            transition = true;
+        }
+        else if (dialogue_tree.consecutive_false > 3 && previousFalseValue > 3)
+        {
+            dialogue_tree.interrogator.current_image = UnityEngine.Random.Range(10, 11);
         }
 
         if (dialogue_tree.interrogator.current_image == 1 && dialogue_tree.interrogator.current_image != current_img)
@@ -183,19 +207,36 @@ public class system : MonoBehaviour {
             paperSound.clip = Resources.Load("SoundEffects/paper") as AudioClip;
             paperSound.Play();
         }
-        else if (dialogue_tree.interrogator.current_image == 4 && dialogue_tree.interrogator.current_image != current_img)
+        else if (dialogue_tree.consecutive_false == 2 && dialogue_tree.interrogator.current_image != current_img)
         {
             AudioSource chairSound;
             chairSound = gameObject.AddComponent<AudioSource>();
             chairSound.clip = Resources.Load("SoundEffects/chair2") as AudioClip;
             chairSound.Play();
         }
-        else if (dialogue_tree.interrogator.current_image == 5 && dialogue_tree.interrogator.current_image != current_img) {
+        else if (dialogue_tree.consecutive_false == 3 && dialogue_tree.interrogator.current_image != current_img)
+        {
+            AudioSource chairSound;
+            chairSound = gameObject.AddComponent<AudioSource>();
+            chairSound.clip = Resources.Load("SoundEffects/chair2") as AudioClip;
+            chairSound.Play();
+        }
+        else if (dialogue_tree.interrogator.current_image == 7 && dialogue_tree.interrogator.current_image != current_img)
+        {
             AudioSource exhaleSound;
             exhaleSound = gameObject.AddComponent<AudioSource>();
             exhaleSound.clip = Resources.Load("SoundEffects/exhale") as AudioClip;
             exhaleSound.Play();
         }
+        else if (dialogue_tree.consecutive_false > 3 && dialogue_tree.interrogator.current_image != current_img)
+        {
+            AudioSource tableSlam;
+            tableSlam = gameObject.AddComponent<AudioSource>();
+            tableSlam.clip = Resources.Load("SoundEffects/table") as AudioClip;
+            tableSlam.Play();
+        }
+
+        previousFalseValue = dialogue_tree.consecutive_false;
     }
 
     // ------ convertBool ------
