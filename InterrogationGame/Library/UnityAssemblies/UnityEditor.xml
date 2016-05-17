@@ -2217,6 +2217,15 @@ Units is normalized time.</para>
         <para>Array of asset bundle names.</para>
       </returns>
     </member>
+    <member name="M:UnityEditor.AssetDatabase.GetAssetDependencyHash(System.String)">
+      <summary>
+        <para>Returns the hash of all the dependencies of an asset.</para>
+      </summary>
+      <param name="path">Path to the asset.</param>
+      <returns>
+        <para>Aggregate hash.</para>
+      </returns>
+    </member>
     <member name="M:UnityEditor.AssetDatabase.GetAssetOrScenePath(UnityEngine.Object)">
       <summary>
         <para>Returns the path name relative to the project folder where the asset is stored.</para>
@@ -3091,7 +3100,7 @@ Amount of compression. The value roughly corresponds to the ratio between the re
     </member>
     <member name="F:UnityEditor.BuildOptions.AcceptExternalModificationsToPlayer">
       <summary>
-        <para>Used when building Xcode (iPhone) or Eclipse (Android) projects.</para>
+        <para>Used when building Xcode (iOS) or Eclipse (Android) projects.</para>
       </summary>
     </member>
     <member name="F:UnityEditor.BuildOptions.AllowDebugging">
@@ -11006,6 +11015,13 @@ MYCOMPUTER\SHAREDFOLDER\.</para>
       </summary>
       <param name="target"></param>
     </member>
+    <member name="M:UnityEditor.EditorUserBuildSettings.GetPlatformSettings(System.String,System.String)">
+      <summary>
+        <para>Returns value for platform specifc Editor setting.</para>
+      </summary>
+      <param name="platformName">The name of the platform.</param>
+      <param name="name">The name of the setting.</param>
+    </member>
     <member name="M:UnityEditor.EditorUserBuildSettings.GetWSADotNetNative(UnityEditor.WSABuildType)">
       <summary>
         <para>Is .NET Native enabled for specific build configuration.
@@ -11022,6 +11038,14 @@ More information - https:msdn.microsoft.comen-uslibrary/dn584397(v=vs.110).aspx.
       </summary>
       <param name="target"></param>
       <param name="location"></param>
+    </member>
+    <member name="M:UnityEditor.EditorUserBuildSettings.SetPlatformSettings(System.String,System.String,System.String)">
+      <summary>
+        <para>Set platform specifc Editor setting.</para>
+      </summary>
+      <param name="platformName">The name of the platform.</param>
+      <param name="name">The name of the setting.</param>
+      <param name="value">Setting value.</param>
     </member>
     <member name="M:UnityEditor.EditorUserBuildSettings.SetWSADotNetNative(UnityEditor.WSABuildType,System.Boolean)">
       <summary>
@@ -17600,6 +17624,16 @@ Note: calling this function will implicitly call Application.SetStackTraceLogTyp
         <para>tvOS specific player settings.</para>
       </summary>
     </member>
+    <member name="P:UnityEditor.PlayerSettings.tvOS.sdkVersion">
+      <summary>
+        <para>Active tvOS SDK version used for build.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEditor.PlayerSettings.tvOS.targetOSVersion">
+      <summary>
+        <para>Deployment minimal version of tvOS.</para>
+      </summary>
+    </member>
     <member name="T:UnityEditor.PlayerSettings.WiiU">
       <summary>
         <para>Wii U specific player settings.</para>
@@ -21521,6 +21555,41 @@ Valid values are in the range [0-1], with higher values generating a tighter mes
         <para>Create an editable copy of the font asset at path.</para>
       </summary>
       <param name="path"></param>
+    </member>
+    <member name="T:UnityEditor.tvOSSdkVersion">
+      <summary>
+        <para>Supported tvOS SDK versions.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEditor.tvOSSdkVersion.Device">
+      <summary>
+        <para>Device SDK.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEditor.tvOSSdkVersion.Simulator">
+      <summary>
+        <para>Simulator SDK.</para>
+      </summary>
+    </member>
+    <member name="T:UnityEditor.tvOSTargetOSVersion">
+      <summary>
+        <para>Supported tvOS deployment versions.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEditor.tvOSTargetOSVersion.tvOS_9_0">
+      <summary>
+        <para>Target tvOS 9.0.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEditor.tvOSTargetOSVersion.tvOS_9_1">
+      <summary>
+        <para>Target tvOS 9.1.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEditor.tvOSTargetOSVersion.Unknown">
+      <summary>
+        <para>Unknown tvOS version, managed by user.</para>
+      </summary>
     </member>
     <member name="T:UnityEditor.UIOrientation">
       <summary>

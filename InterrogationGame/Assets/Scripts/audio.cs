@@ -66,7 +66,7 @@ public class audio : MonoBehaviour
             stingOneSource.Play();
 
             trackTwo.TransitionTo(m_TransitionIn);
-
+            Debug.Log("Nah");
         }
         else if (consecutive_false > 1)
         { //plays all three tracks if answered two incorrectly
@@ -74,8 +74,10 @@ public class audio : MonoBehaviour
             stingTwoSource.Play();
 
             trackThree.TransitionTo(m_TransitionIn);
+            Debug.Log("Nah");
 
-         }
+
+        }
 
     }
 

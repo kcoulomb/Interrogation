@@ -22,6 +22,23 @@ public class updateSystem : MonoBehaviour
     public float wait_int = 0;
 
     int prevConsecFalse = 0;
+    private GameObject[] buttons;
+    private GameObject question_text;
+    private GameObject question_box;
+
+
+    void Awake()
+    {
+        buttons = GameObject.FindGameObjectsWithTag("Button");
+        question_text = GameObject.FindGameObjectWithTag("Question");
+        question_box = GameObject.FindGameObjectWithTag("QuestionBox");
+
+        for(int i = 0; i < buttons.Length; i++)
+        {
+            button.GetComponent<Image>().CrossFadeColor(Color.black, 0f, true, true);
+        }
+
+    }
 
     // ------ update ------
     // 1. determines if buttons can be clicked/which button was clicked
@@ -29,9 +46,9 @@ public class updateSystem : MonoBehaviour
     // 3. determines if the vest should activate
     public void update()
     {
-        GameObject[] buttons = GameObject.FindGameObjectsWithTag("Button");
-        GameObject question_text = GameObject.FindGameObjectWithTag("Question");
-        GameObject question_box = GameObject.FindGameObjectWithTag("QuestionBox");
+        //GameObject[] buttons = GameObject.FindGameObjectsWithTag("Button");
+        //GameObject question_text = GameObject.FindGameObjectWithTag("Question");
+        //GameObject question_box = GameObject.FindGameObjectWithTag("QuestionBox");
 
         if (!get_dialogue.check_click()) {
             return;
@@ -158,7 +175,7 @@ public class updateSystem : MonoBehaviour
             if (i != selected_button_num)
             {
                 fadeInAnswerText(buttons[i]);
-                buttons[selected_button_num].GetComponent<Image>().CrossFadeColor(Color.white, 1.0f, false, true);
+                buttons[selected_button_num].GetComponent<Image>().CrossFadeColor(Color.black, 1.0f, false, true);
             }            
             buttons[i].GetComponentInChildren<Text>().text = new_text[i];
         }
@@ -195,7 +212,7 @@ public class updateSystem : MonoBehaviour
     // Changes button color to red if player answers incorrectly
     void redButton(GameObject button)
     {
-        button.GetComponent<Image>().CrossFadeColor(Color.red, 1.0f, false, true);
+        button.GetComponent<Image>().CrossFadeColor(Color.red, 1.0f, true, true);
     }
 
     // Triggers cutscenes or moves to credits

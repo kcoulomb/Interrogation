@@ -3452,6 +3452,32 @@ If relativePath is empty it refers to the game object the animation clip is atta
         <para>A boolean value of True if recording stopped successfully or False if an error occurred.</para>
       </returns>
     </member>
+    <member name="T:UnityEngine.Apple.TV.Remote">
+      <summary>
+        <para>A class for Apple TV remote input configuration.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Apple.TV.Remote.allowExitToHome">
+      <summary>
+        <para>Configures how "Menu" button behaves on Apple TV Remote. If this property is set to true hitting "Menu" on Remote will exit to system home screen. When this property is false current application is responsible for handling "Menu" button. It is recommended to set this property to true on top level menus of your application.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Apple.TV.Remote.allowRemoteRotation">
+      <summary>
+        <para>Configures if Apple TV Remote should autorotate all the inputs when Remote is being held in horizontal orientation. Default is false.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Apple.TV.Remote.reportAbsoluteDpadValues">
+      <summary>
+        <para>Configures how touches are mapped to analog joystick axes in relative or absolute values. If set to true it will return +1 on Horizontal axis when very far right is being touched on Remote touch aread (and -1 when very left area is touched correspondingly). The same applies for Vertical axis too. When this property is set to false player should swipe instead of touching specific area of remote to generate Horizontal or Vertical input.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Apple.TV.Remote.touchesEnabled">
+      <summary>
+        <para>Disables Apple TV Remote touch propagation to Unity Input.touches API. Useful for 3rd party frameworks, which do not respect Touch.type == Indirect.
+Default is false.</para>
+      </summary>
+    </member>
     <member name="T:UnityEngine.Application">
       <summary>
         <para>Access to application run-time data.</para>
@@ -3806,7 +3832,7 @@ If relativePath is empty it refers to the game object the animation clip is atta
       </summary>
       <param name="delegateMethod">Delegate method.</param>
       <returns>
-        <para>In case of error returns false and the delegate method will not be invoked.</para>
+        <para>Returns true if successful, or false for platforms which do not support Advertising Identifiers. In this case, the delegate method is not invoked.</para>
       </returns>
     </member>
     <member name="M:UnityEngine.Application.RequestUserAuthorization(UnityEngine.UserAuthorization)">
@@ -7944,6 +7970,11 @@ See Also: CanvasRenderer.SetMaterialCount, CanvasRenderer.SetTexture.</para>
         <para>An array of CapsuleColliders which this Cloth instance should collide with.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.Cloth.clothSolverFrequency">
+      <summary>
+        <para>Number of cloth solver iterations per second.</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.Cloth.coefficients">
       <summary>
         <para>The cloth skinning coefficients used to set up how the cloth interacts with the skinned mesh.</para>
@@ -7959,9 +7990,19 @@ See Also: CanvasRenderer.SetMaterialCount, CanvasRenderer.SetTexture.</para>
         <para>Damp cloth motion.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.Cloth.enableContinuousCollision">
+      <summary>
+        <para>Enable continuous collision to improve collision stability.</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.Cloth.enabled">
       <summary>
         <para>Is this cloth enabled?</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Cloth.enableTethers">
+      <summary>
+        <para>Enable Tether Anchors.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Cloth.externalAcceleration">
@@ -8002,11 +8043,6 @@ See Also: CanvasRenderer.SetMaterialCount, CanvasRenderer.SetTexture.</para>
     <member name="P:UnityEngine.Cloth.stretchingStiffness">
       <summary>
         <para>Stretching stiffness of the cloth.</para>
-      </summary>
-    </member>
-    <member name="P:UnityEngine.Cloth.useContinuousCollision">
-      <summary>
-        <para>Enable continuous collision to improve collision stability.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Cloth.useGravity">
@@ -9445,6 +9481,15 @@ See Also: CanvasRenderer.SetMaterialCount, CanvasRenderer.SetTexture.</para>
         <para>Kernel index, or -1 if not found.</para>
       </returns>
     </member>
+    <member name="M:UnityEngine.ComputeShader.GetKernelThreadGroupSizes(System.Int32,System.UInt32&amp;,System.UInt32&amp;,System.UInt32&amp;)">
+      <summary>
+        <para>Get kernel thread group sizes.</para>
+      </summary>
+      <param name="kernelIndex">Which kernel to query. A single compute shader asset can have multiple kernel entry points.</param>
+      <param name="x">Thread group size in the X dimension.</param>
+      <param name="y">Thread group size in the Y dimension.</param>
+      <param name="z">Thread group size in the Z dimension.</param>
+    </member>
     <member name="M:UnityEngine.ComputeShader.HasKernel(System.String)">
       <summary>
         <para>Checks whether a shader contains a given kernel.</para>
@@ -10674,6 +10719,11 @@ Sometimes it is not possible to project (for example when the joints form a cycl
     <member name="F:UnityEngine.DepthTextureMode.DepthNormals">
       <summary>
         <para>Generate a depth + normals texture.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.DepthTextureMode.MotionVectors">
+      <summary>
+        <para>Specifies whether motion vectors should be rendered (if possible).</para>
       </summary>
     </member>
     <member name="F:UnityEngine.DepthTextureMode.None">
@@ -31217,6 +31267,11 @@ If a string, the string will be converted to raw bytes via &lt;a href="http:msdn
         <para>Script interface for a Min-Max Curve.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.ParticleSystem.MinMaxCurve.constant">
+      <summary>
+        <para>Set the constant value.</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.ParticleSystem.MinMaxCurve.constantMax">
       <summary>
         <para>Set a constant for the upper bound.</para>
@@ -31225,6 +31280,11 @@ If a string, the string will be converted to raw bytes via &lt;a href="http:msdn
     <member name="P:UnityEngine.ParticleSystem.MinMaxCurve.constantMin">
       <summary>
         <para>Set a constant for the lower bound.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.ParticleSystem.MinMaxCurve.curve">
+      <summary>
+        <para>Set the curve.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.ParticleSystem.MinMaxCurve.curveMax">
@@ -31300,6 +31360,11 @@ If a string, the string will be converted to raw bytes via &lt;a href="http:msdn
         <para>Script interface for a Min-Max Gradient.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.ParticleSystem.MinMaxGradient.color">
+      <summary>
+        <para>Set a constant color.</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.ParticleSystem.MinMaxGradient.colorMax">
       <summary>
         <para>Set a constant color for the upper bound.</para>
@@ -31308,6 +31373,11 @@ If a string, the string will be converted to raw bytes via &lt;a href="http:msdn
     <member name="P:UnityEngine.ParticleSystem.MinMaxGradient.colorMin">
       <summary>
         <para>Set a constant color for the lower bound.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.ParticleSystem.MinMaxGradient.gradient">
+      <summary>
+        <para>Set the gradient.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.ParticleSystem.MinMaxGradient.gradientMax">
@@ -31629,7 +31699,7 @@ If a string, the string will be converted to raw bytes via &lt;a href="http:msdn
     </member>
     <member name="P:UnityEngine.ParticleSystem.ShapeModule.useMeshColors">
       <summary>
-        <para>Modulate the particle colours with the vertex colors, or the material color if no vertex colors exist.</para>
+        <para>Modulate the particle colors with the vertex colors, or the material color if no vertex colors exist.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.ParticleSystem.ShapeModule.useMeshMaterialIndex">
@@ -32463,6 +32533,16 @@ If a string, the string will be converted to raw bytes via &lt;a href="http:msdn
         <para>The default contact offset of the newly created colliders.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.Physics.defaultSolverIterations">
+      <summary>
+        <para>The defaultSolverIterations determines how accurately Rigidbody joints and collision contacts are resolved. (default 6). Must be positive.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Physics.defaultSolverVelocityIterations">
+      <summary>
+        <para>The defaultSolverVelocityIterations affects how how accurately Rigidbody joints and collision contacts are resolved. (default 1). Must be positive.</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.Physics.gravity">
       <summary>
         <para>The gravity applied to all rigid bodies in the scene.</para>
@@ -32496,11 +32576,6 @@ If a string, the string will be converted to raw bytes via &lt;a href="http:msdn
     <member name="P:UnityEngine.Physics.sleepVelocity">
       <summary>
         <para>The default linear velocity, below which objects start going to sleep (default 0.15). Must be positive.</para>
-      </summary>
-    </member>
-    <member name="P:UnityEngine.Physics.solverIterationCount">
-      <summary>
-        <para>The default solver iteration count permitted for any rigid bodies (default 7). Must be positive.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.Physics.AllLayers">
@@ -36062,6 +36137,11 @@ See Also: ReflectionProbeTimeSlicingMode.</para>
         <para>Returns all the instantiated materials of this object.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.Renderer.motionVectors">
+      <summary>
+        <para>Specifies whether this renderer has a per-object motion vector pass.</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.Renderer.probeAnchor">
       <summary>
         <para>If set, Renderer will use this Transform's position to find the light or reflection probe.</para>
@@ -36533,6 +36613,11 @@ See Also: ReflectionProbeTimeSlicingMode.</para>
     <member name="F:UnityEngine.Rendering.BuiltinShaderType.LightHalo">
       <summary>
         <para>Default shader used for light halos.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.Rendering.BuiltinShaderType.MotionVectors">
+      <summary>
+        <para>Shader used for Motion Vectors when enabled on a Camera.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.Rendering.BuiltinShaderType.ScreenSpaceShadows">
@@ -37405,6 +37490,11 @@ See Also: ReflectionProbeTimeSlicingMode.</para>
     <member name="F:UnityEngine.Rendering.PassType.Meta">
       <summary>
         <para>Shader pass used to generate the albedo and emissive values used as input to lightmapping.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.Rendering.PassType.MotionVectors">
+      <summary>
+        <para>Motion vector render pass.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.Rendering.PassType.Normal">
@@ -38735,9 +38825,14 @@ Updating a probe's cubemap is a costly operation. Unity needs to render the enti
         <para>The linear velocity below which objects start going to sleep. (Default 0.14) range { 0, infinity }.</para>
       </summary>
     </member>
-    <member name="P:UnityEngine.Rigidbody.solverIterationCount">
+    <member name="P:UnityEngine.Rigidbody.solverIterations">
       <summary>
-        <para>Allows you to override the solver iteration count per rigidbody.</para>
+        <para>The solverIterations determines how accurately Rigidbody joints and collision contacts are resolved. Overrides Physics.defaultSolverIterations. Must be positive.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Rigidbody.solverVelocityIterations">
+      <summary>
+        <para>The solverVelocityIterations affects how how accurately Rigidbody joints and collision contacts are resolved. Overrides Physics.defaultSolverVelocityIterations. Must be positive.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Rigidbody.useConeFriction">
@@ -40635,6 +40730,11 @@ It is required that the GameObject is at the root of its current scene.</para>
     <member name="P:UnityEngine.SkinnedMeshRenderer.sharedMesh">
       <summary>
         <para>The mesh used for skinning.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.SkinnedMeshRenderer.skinnedMotionVectors">
+      <summary>
+        <para>Specifies whether skinned motion vectors should be used for this renderer.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.SkinnedMeshRenderer.updateWhenOffscreen">
