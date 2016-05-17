@@ -18,7 +18,6 @@ public class audio : MonoBehaviour
     public UIManager checkIfPaused;
 
     private float m_TransitionIn;
-    private float m_TransitionOut;
     private float m_QuarterNote;
 
     //interrogator's voice track
@@ -55,7 +54,6 @@ public class audio : MonoBehaviour
     {
         m_QuarterNote = 10 / bpm;
         m_TransitionIn = m_QuarterNote;          //controls the length of fade in/fade out
-        m_TransitionOut = m_QuarterNote * 100;        //
 
         //changes audio depending on consecutive falses    
         if (consecutive_false == 0)

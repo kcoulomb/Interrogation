@@ -117,8 +117,8 @@ public class blink : MonoBehaviour {
         //figure out current pin
         float prob = Random.Range(0, 100);
         
-        //if prob > 20 the current pin is vibration, else it is temperature
-        //if (prob > 20) { current_pin = 5; } else { current_pin = 3; } something broken about this line
+        //if prob > 20 the current pin is vibration, else it is poomp
+        if (prob > 20) { current_pin = 5; } else { current_pin = 3; } //something broken about this line
                        
         ConfigurePins();
              

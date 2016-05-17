@@ -19,7 +19,7 @@ public class gifs : MonoBehaviour
 
         x = find_update();
 
-        animation = new Sprite[33];
+        animation = new Sprite[bounds];
         for (int j = 1; j < bounds; j++)
         {
             animation[j] = Resources.Load<Sprite>(folder_name + j);
@@ -51,7 +51,7 @@ public class gifs : MonoBehaviour
 
     IEnumerator fadeIn(GameObject frame)
     {
-        frame.GetComponent<SpriteRenderer>().color = new Color(0.8f, 0.8f, 0.8f, Mathf.SmoothStep(0f, 0.8f, 1f));
+        frame.GetComponent<SpriteRenderer>().color = new Color(0.8f, 0.8f, 0.8f, Mathf.SmoothStep(0f, 0.6f, 1f));
         yield return new WaitForSeconds(1f);
     }
 
@@ -67,7 +67,7 @@ public class gifs : MonoBehaviour
         if (folder_name == "Other/smoke_frames/smoke_frame") {
             return 33;
         } else if (folder_name == "Other/menu_smoke_frames/Menu Scene_smoke animation_") {
-            return 22;
+            return 23;
         } else if (folder_name == "Other/dust_frames/smoke-") {
             return 48;
         } else {

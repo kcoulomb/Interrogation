@@ -42,7 +42,7 @@ public class intro : MonoBehaviour {
 
         //background becomes interrogator
         Sprite background = new Sprite();
-        background = Resources.Load<Sprite>("Interrogator/pic2");
+        background = Resources.Load<Sprite>("Interrogator/picB");
         GameObject background_image = GameObject.FindGameObjectWithTag("Interrogator");
         background_image.GetComponent<Image>().sprite = background;
 
@@ -57,14 +57,14 @@ public class intro : MonoBehaviour {
         sound_effects.Play();
         yield return new WaitForSeconds(sound_effects.clip.length);
 
-        background = Resources.Load<Sprite>("Interrogator/pic4");
+        background = Resources.Load<Sprite>("Interrogator/picD");
         background_image.GetComponent<Image>().sprite = background;
 
         sound_effects.clip = Resources.Load("Voices/Cutscenes/intro2") as AudioClip;
         sound_effects.Play();
         yield return new WaitForSeconds(sound_effects.clip.length);
 
-        background = Resources.Load<Sprite>("Interrogator/pic1");
+        background = Resources.Load<Sprite>("Interrogator/picA");
         background_image.GetComponent<Image>().sprite = background;
 
         sound_effects.clip = Resources.Load("Voices/Cutscenes/intro3") as AudioClip;
@@ -76,7 +76,7 @@ public class intro : MonoBehaviour {
         paperSound.clip = Resources.Load("SoundEffects/paper") as AudioClip;
         paperSound.Play();
 
-        background = Resources.Load<Sprite>("Interrogator/pic2");
+        background = Resources.Load<Sprite>("Interrogator/picB");
         background_image.GetComponent<Image>().sprite = background;
 
         sound_effects.clip = Resources.Load("Voices/Cutscenes/intro4") as AudioClip;

@@ -13,8 +13,6 @@ public class outro : MonoBehaviour {
         AudioSource sound_effects = gameObject.AddComponent<AudioSource>();
         //audiosource for interrogator's voice
         AudioSource int_voice = gameObject.AddComponent<AudioSource>();
-        //audiosource for our background music
-        AudioSource bg_music = gameObject.AddComponent<AudioSource>();
 
         int_voice.clip = Resources.Load("Voices/Cutscenes/end") as AudioClip;
         int_voice.Play();
@@ -27,7 +25,7 @@ public class outro : MonoBehaviour {
         GameObject background_image = GameObject.FindGameObjectWithTag("Interrogator");
         Sprite background = new Sprite();
 
-        background = Resources.Load<Sprite>("Interrogator/pic5");
+        background = Resources.Load<Sprite>("Interrogator/picG");
         background_image.GetComponent<Image>().sprite = background;
 
         yield return new WaitForSeconds(int_voice.clip.length/2);

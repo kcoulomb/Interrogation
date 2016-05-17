@@ -4,18 +4,26 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    GameObject[] pauseObjects;
-    GameObject[] returnToMain;
-    GameObject[] cutsceneObjects;
+    private GameObject pause;
+    private GameObject returnToMain;
+    private GameObject options;
+
     public bool isPaused = false;
     public bool quit = false;
     public bool mainMenu = false;
 
+    void Awake()
+    {
+        options = GameObject.FindGameObjectWithTag("OptionsPanel");
+        if(options == null) { Debug.Log("WHY"); }
+        //options.SetActive(false);
+    }
+    
     // Use this for initialization
     void Start()
     {
-        pauseObjects = GameObject.FindGameObjectsWithTag("ShowOnPause");
-        returnToMain = GameObject.FindGameObjectsWithTag("ShowBeforeReturnToMenu");
+        pause = GameObject.FindGameObjectWithTag("ShowOnPause");
+        returnToMain = GameObject.FindGameObjectWithTag("ShowBeforeReturnToMenu");
         hidePaused();
         hideAreYouSure();
     }
@@ -31,17 +39,13 @@ public class UIManager : MonoBehaviour
                 isPaused = true;
                 AudioListener.pause = true;
                 Time.timeScale = 0.0f;
-
-                Debug.Log("Game is now paused");
             }
-            else if (isPaused == true)
+            else if (isPaused == true && !returnToMain.activeSelf && !options.activeSelf)
             {
                 hidePaused();
                 isPaused = false;
                 AudioListener.pause = false;
                 Time.timeScale = 1.0f;
-
-                Debug.Log("Game is now unpaused");
             }
         }
     }
@@ -92,35 +96,33 @@ public class UIManager : MonoBehaviour
     //shows objects with ShowOnPause tag
     public void showPaused()
     {
-        foreach (GameObject g in pauseObjects)
-        {
-            g.SetActive(true);
-        }
+        pause.SetActive(true);
     }
 
     //hides objects with ShowOnPause tag
     public void hidePaused()
     {
-        foreach (GameObject g in pauseObjects)
-        {
-            g.SetActive(false);
-        }
+        pause.SetActive(false);
     }
 
     public void showAreYouSure()
     {
-        foreach (GameObject g in returnToMain)
-        {
-            g.SetActive(true);
-        }
+        returnToMain.SetActive(true);
     }
 
     public void hideAreYouSure()
     {
-        foreach (GameObject g in returnToMain)
-        {
-            g.SetActive(false);
-        }
+        returnToMain.SetActive(false);
+    }
+
+    public void showOptions()
+    {
+        options.SetActive(true);
+    }
+
+    public void hideOptions()
+    {
+        options.SetActive(false);
     }
 
     void OnApplicationQuit()

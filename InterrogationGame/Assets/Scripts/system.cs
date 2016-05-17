@@ -131,13 +131,13 @@ public class system : MonoBehaviour {
         {
             dialogue_tree.consecutive_false++;
           
-            //effects.change_effect(true, dialogue_tree.consecutive_false);
+            effects.change_effect(true, dialogue_tree.consecutive_false);
         }
         else
         {
             dialogue_tree.consecutive_false = 0;
 
-            //effects.change_effect(false, dialogue_tree.consecutive_false);
+            effects.change_effect(false, dialogue_tree.consecutive_false);
         }
         
     }

@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\Cutscenes\intro.cs" />
     <Compile Include="Assets\Scripts\Cutscenes\outro.cs" />
     <Compile Include="Assets\Scripts\UIManager.cs" />
+    <Compile Include="Assets\Scripts\UIMenuManager.cs" />
     <Compile Include="Assets\Scripts\audio.cs" />
     <Compile Include="Assets\Scripts\blink.cs" />
     <Compile Include="Assets\Scripts\changeScene.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Assets\Scripts\interrogator.cs" />
     <Compile Include="Assets\Scripts\menuMusic.cs" />
     <Compile Include="Assets\Scripts\node.cs" />
+    <Compile Include="Assets\Scripts\settings.cs" />
     <Compile Include="Assets\Scripts\system.cs" />
     <Compile Include="Assets\Scripts\updateSystem.cs" />
     <Compile Include="Assets\Uniduino\Scripts\Arduino.Firmata.cs" />
@@ -82,6 +84,7 @@
     <Compile Include="Assets\Uniduino\Scripts\BlinkButton.cs" />
     <Compile Include="Assets\Uniduino\Scripts\SerialPortProxy.cs" />
     <Compile Include="Assets\Uniduino\Scripts\UniduinoSetup.cs" />
+    <Compile Include="Assets\keep.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Scripts\heatmap.txt" />
